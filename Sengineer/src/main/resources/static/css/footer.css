@@ -1,0 +1,35 @@
+footer{
+	width: 100%;
+	background-color: black;
+	
+}
+#low{
+	width: 100%;
+	padding: 0;
+	background-color: black;
+}
+
+.logo i{
+	height: 100px;
+	width: 50px;
+}
+
+.bottom .panel-body a{
+	color: #9c9c9c;
+	padding: 0px 10px 0 5px;
+	border-right: #9c9c9c 1px solid;
+	background-color: black;
+}
+
+#only{
+	border-right: none;
+}
+.bottom p,.bottom a{
+	color: #9c9c9c;
+	padding-top: 10px;
+	font-size: 12px;
+}
+.bottom a:hover{
+	color: white;
+}
+

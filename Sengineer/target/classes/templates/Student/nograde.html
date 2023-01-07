@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生端未查看到课程信息</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/same.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homefrom.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/titleDown.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pageGrade.css}"></link>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/aos.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/numberUpDown.js}"></script>
+    <script type="text/javascript" th:src="@{/js/termchoose.js}"></script>
+    
+
+
+</head>
+<body>
+    <div class="container-fluid thetop">
+        <div class="navbar navbar-default" >
+            <div class="col-md-6 col-sm-11"><img th:src="@{/img/index.png}"></div>
+        </div>
+        <div class="row titledown">
+            <div class="col-md-12">
+                <p>当前端口：学生端</p>            
+            </div>
+        </div>       
+   </div>
+    
+    <div class="container-fluid mid"> 
+        <div class="row notfoot">
+            <div class="col-md-2 col-md-offset-1 sidebar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tab1" style="background: black;">
+                        <span class="sr-only">菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <ul class="nav nav-pills navbar-collapse collapse" id="tab1" role="tablist">
+                    <li role="presentation" ><a th:href="@{/toStudentMsg}">个人信息</a></li>
+                    <li role="presentation" ><a th:href="@{/toStudentClass}">查看课程</a></li>
+                    <li role="presentation" class="active"><a th:href="@{/toStudentGrade}">查看成绩</a></li>
+                    <li role="presentation"><a th:href="@{/toStudentChoose}">选课系统</a></li>
+                    <li role="presentation"><a th:href="@{/toLogin}">退出登录</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">   
+                <div class="toolbar row">                 
+                    <div class="termChoose col-md-4">
+                        <p>学年&nbsp;</p>
+                        <div class="input-group spinner">
+                            <input type="text" class="form-control" id="termNum" value="2022">
+                            <div class="input-group-btn-vertical">
+                              <button class="btn btn-default" type="button" id="termbtn"><i class="fa fa-caret-up"></i></button>
+                              <button class="btn btn-default" type="button" id="termbtn2"><i class="fa fa-caret-down"></i></button>
+                            </div>
+                        </div>
+                        <p>--</p>
+                        <p id="termyear" style="background-color: #e9e9ed;padding-left: 10px;padding-right: 10px;border-radius: 5px;">
+                        </p>
+                        <p>学期</p>
+                        
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>第一学期</option>
+                                <option>第二学期</option>
+                            </select>
+                        </div> 
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <form>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+                              <label class="form-check-label" for="radio1">入学以来</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                              <label class="form-check-label" for="radio2">学年</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option2">
+                                <label class="form-check-label" for="radio3">学期</label>
+                            </div>   
+                            
+                        </form> 
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info" id="edit" style="margin-right: 20px;">检索</button>   
+                        <button type="button" class="btn btn-danger" id="back">打印</button>
+                    </div>
+                </div>
+                
+                <div class="gradeTable">
+                    <h3 style="text-align: center;">河南大学学生成绩明细</h3>
+                    <h3 style="text-align: center; height: 300px; line-height: 300px;">
+                        没有检索到记录!
+                    </h3>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="row">
+                <div class="bottom" id="low">
+                    <div class="col-md-5">
+                        <div class="panel-body">
+                            <a href="student-msg.html">个人信息</a>
+                            <a href="student-class.html">查看课程</a>
+                            <a href="student-grade.html">查看成绩</a>
+                            <a href="student-chooseclass.html">选课系统</a>
+                            <a href="../login.html" id="only">退出登录</a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset--1" style="background: black;">
+                        <p class="text-right">
+<!--                                                    小组成员：李坤松、薛成、刘佳鑫、陈天生、董天识、张敖铭-->
+                            小组成员：李坤松、薛成、李世龙
+                            <br>
+                                项目名: <a href="# ">LXLDCZ教学信息管理平台</a>
+                        </p>
+                    </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+</body>
+</html>

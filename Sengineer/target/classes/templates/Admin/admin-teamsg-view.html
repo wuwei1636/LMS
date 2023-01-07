@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员端修改教师信息</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/same.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/titleDown.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homefrom.css}">
+    </link>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/aos.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/admin-msg.js}"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid thetop">
+        <div class="navbar navbar-default" >
+            <div class="col-md-6 col-sm-11"><img th:src="@{/img/index.png}"></div>
+        </div>
+        <div class="row titledown">
+            <div class="col-md-12">
+                <p>当前端口：管理员</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mid">
+        <div class="row notfoot">
+            <div class="col-md-2 col-md-offset-1 sidebar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tab1"
+                        style="background: black;">
+                        <span class="sr-only">菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <ul class="nav nav-pills navbar-collapse collapse" id="tab1" role="tablist">
+                    <li role="presentation" class="active"><a th:href="@{/toAdminTeammsg}">教师信息</a></li>
+                    <li role="presentation"><a th:href="@{/toAdminStumsg}">学生信息</a></li>
+                    <li role="presentation"><a th:href="@{/toAdminCoursemsg}">课程信息</a></li>
+                    <!-- <li role="presentation"><a href="chooseclass.html">选课系统</a></li> -->
+                    <li role="presentation"><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <form class="form-horizontal" role="form" th:action="@{/changeAdminTeacher}" method="post">
+                    <!--<fieldset disabled>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input class="form-control editok" name="name" id="focusedInput" type="text" th:value="${adTea.getName()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">工号</label>
+                        <div class="col-sm-10">
+                            <input class="form-control editok" name="teacher_id" id="disabledInput" type="text" th:value="${adTea.getTeacher_id()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">所属院系</label></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="faculty" class="form-control editok" th:value="${adTea.getFaculty()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">职称</label></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="professional_title" class="form-control editok" th:value="${adTea.getProfessional_title()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputSuccess">身份证号码</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_card" class="form-control editok" id="inputSuccess" th:value="${adTea.getId_card()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputWarning">手机号码</label></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="phone" class="form-control editok" id="" th:value="${adTea.getPhone()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputWarning">电子邮箱</label></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="email" class="form-control editok" id="inputWarning" th:value="${adTea.getEmail()}">
+                        </div>
+                    </div>
+                    <!--</fieldset>-->
+                    <div class="row">
+                        <button type="button" class="btn btn-info" id="edit" style="margin-left: 35%;">编辑</button>
+
+                        <button type="submit" class="btn btn-danger" id="sub"
+                            style="position: absolute; margin-left:40px">提交</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <footer class="row">
+            <div class="bottom" id="low">
+                <div class="col-md-5">
+                    <div class="panel-body">
+                        <a href="admin-teamsg.html">教师信息</a>
+                        <a href="admin-stumsg.html">学生信息</a>
+                        <a href="admin-courmsg.html">课程信息</a>
+                        <a href="../login.html" id="only">退出登录</a>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset--1" style="background: black;">
+                    <p class="text-right">
+<!--                                                小组成员：李坤松、薛成、刘佳鑫、陈天生、董天识、张敖铭-->
+                        小组成员：李坤松、薛成、李世龙
+                        <br>
+                        项目名: <a href="# ">LXLDCZ教学信息管理平台</a>
+                    </p>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+</body>
+
+</html>

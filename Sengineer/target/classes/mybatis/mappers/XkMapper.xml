@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sengineer.Mapper.XkMapper">
+
+    <select id="courses" resultType="course">
+        select *
+        from course;
+    </select>
+
+    <select id="getCourseById" resultType="course">
+        select * from course where course_id = #{course_id}
+    </select>
+
+    <select id="getCourseByMore" resultType="course">
+        select * from course
+         where 1 = 1
+        <if test="course_id != '' and course_id != null">
+            and course_id = #{course_id}
+        </if>
+        <if test="course_name != '' and course_name != null">
+            and course_name like concat ('%' ,#{course_name},'%')
+        </if>
+        <if test="teacher_name != '' and teacher_name != null">
+            and teacher_name like concat ('%' ,#{teacher_name},'%')
+        </if>
+
+    </select>
+
+    <select id="getAllcourseById" resultType="Allcourse">
+        select *
+        from Allcourse
+        where course_id = #{course_id};
+    </select>
+
+    <select id="getCourseByThree" resultType="Course_all">
+        select distinct c.course_id , c.course_name , c.teacher_name,
+               c.credit_hour , c.credit ,c.stu_num, c.year , c.semester,
+               c.classroom,c.session_time ,c.isrequired , c.specialized
+        from course as c
+        where specialized = #{specialized}
+            and isrequired = #{isrequired}
+        <if test="course_name != '' and course_name != null">
+            and course_name like concat ('%' ,#{course_name},'%')
+        </if>
+
+    </select>
+
+    <select id="getGradeByTwo" parameterType="Allcourse" resultType="Allcourse">
+        select * from Allcourse
+        where course_id = #{course_id}
+            and stu_id = #{stu_id}
+    </select>
+
+
+    <insert id="insertStuCla" parameterType="Allcourse">
+        insert into Allcourse (course_id,stu_id) values (#{course_id} , #{stu_id})
+    </insert>
+
+    <delete id="deleteStuCla" parameterType="Allcourse">
+        delete from Allcourse where course_id = #{course_id} and stu_id = #{stu_id}
+    </delete>
+
+    <update id="addStuNum" parameterType="course">
+        update course set stu_num = stu_num + 1
+        where course_id = #{course_id}
+    </update>
+
+    <update id="delStuNum" parameterType="course">
+        update course set stu_num = stu_num - 1
+        where course_id = #{course_id}
+    </update>
+
+    <update id="updateStuNum" parameterType="course">
+        update course set stu_num = #{stu_num} where course_id = #{course_id}
+    </update>
+
+    <delete id="delByCourseId" >
+        delete from Allcourse where course_id = #{course_id};
+    </delete>
+
+    <delete id="delByStuId">
+        delete
+        from Allcourse
+        where stu_id = #{stu_id};
+    </delete>
+
+    <select id="CourStuSum" resultType="int">
+        select count(*) from Allcourse where course_id = #{course_id}
+    </select>
+
+</mapper>

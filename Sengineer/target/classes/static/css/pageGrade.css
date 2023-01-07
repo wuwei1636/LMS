@@ -1,0 +1,73 @@
+.toolbar,.gradeTable{
+    border: #d3d3d3 2px dashed;
+    margin-top: 20px;
+    padding-top: 4px;
+    border-radius: 5px;
+}
+.termChoose{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    
+}
+.termChoose p{
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+}
+.spinner {
+    width: 80px;
+  }
+  .spinner input {
+    text-align: right;
+  }
+  .input-group-btn-vertical {
+    position: relative;
+    width: 1%;
+    vertical-align: middle;
+    display: table-cell;
+  }
+  .input-group-btn-vertical > .btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+    margin-left: -1px;
+    margin-top: -6px;
+    position: relative;
+    border-radius: 0;
+  }
+  .input-group-btn-vertical > .btn:first-child {
+    border-top-right-radius: 4px;
+  }
+  .input-group-btn-vertical > .btn:last-child {
+    margin-top: -1px;
+    border-bottom-right-radius: 4px;
+  }
+  .input-group-btn-vertical i{
+    position: absolute;
+    top: 0;
+    left: 4px;
+  }
+
+.form-check{
+  float: left;
+  margin-right: 10px;
+  height: 34px;
+  line-height: 34px;
+}
+.gradeTable{
+  height: 470px;
+  overflow: auto;
+}
+
+.gradeTable .table{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+.gradeTable th,.gradeTable tr{
+  text-align: center;
+}

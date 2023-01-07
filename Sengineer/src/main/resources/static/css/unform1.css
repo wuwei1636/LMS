@@ -1,0 +1,36 @@
+.form{
+	background: none; 
+	border: none; 
+	margin-top: 20px; 
+	padding: 0;
+}
+.bigl,.form .left ul{
+	padding: 0;
+}
+.form .left li{
+	background: none;
+	list-style: none;
+	display: inline-block;
+	margin-right: 10px;
+
+}
+.form .left li ul li{
+	display: block;
+	margin-right: 0;
+}
+.form .left li ul{
+	opacity: 0.8;
+	margin-left: 70px;
+}
+.right h2{
+	color: #b6124a;
+}
+table a{
+	color: black;
+}
+table a:hover{
+	color: black;
+}
+.firstline{
+	background: #f7f7f7;
+}

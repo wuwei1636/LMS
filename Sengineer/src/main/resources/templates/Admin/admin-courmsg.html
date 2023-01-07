@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员端课程信息</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/same.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/titleDown.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homefrom.css}">
+    </link>
+    <script type="text/javascript" th:src="@{/js/plugins.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/teacher-course-view.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/aos.js}"></script>
+    <script th:src="@{/js/Admin/admin-courmsg.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins.min.js}"></script>
+    <script th:src="@{/js/search.js}"></script>
+    <style>
+        a.xiangqing {
+            font-size: 14px;
+            color: #333;
+        }
+
+        a.xiangqing:hover {
+            color: #b6124a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid thetop">
+        <div class="navbar navbar-default" >
+            <div class="col-md-6 col-sm-11"><img th:src="@{/img/index.png}"></div>
+        </div>
+        <div class="row titledown">
+            <div class="col-md-12">
+                <p>当前端口：管理员</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mid">
+        <div class="row notfoot">
+            <div class="col-md-2 col-md-offset-1 sidebar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tab1"
+                        style="background: black;">
+                        <span class="sr-only">菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <ul class="nav nav-pills navbar-collapse collapse" id="tab1" role="tablist">
+                    <li role="presentation"><a th:href="@{/toAdminTeammsg}">教师信息</a></li>
+                    <li role="presentation"><a th:href="@{/toAdminStumsg}">学生信息</a></li>
+                    <li role="presentation" class="active"><a th:href="@{/toAdminCoursemsg}">课程信息</a></li>
+                    <!-- <li role="presentation"><a href="chooseclass.html">选课系统</a></li> -->
+                    <li role="presentation"><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9 content">
+                <div class="top">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="exampleInputName1">课程编号</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="请输入课程编号">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName2">课程名称</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入课程名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName3">任课教师</label>
+                            <input type="text" class="form-control" id="exampleInputName3" placeholder="请输入任课教师">
+                        </div>
+                        
+                        
+                        
+                        <div class="form-group right">
+                            <button type="button" class="btn btn-primary" id="add">新增课程</button>
+                            <button type="button" class="btn btn-primary" id="search_l">搜索</button>
+                            <button type="button" class="btn btn-primary" id="search_all">检索全部</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bottom">
+                    <table class="table table-hover table-responsive ">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>课程编号</th>
+                                <th>课程名称</th>
+                                <th>授课老师</th>
+                                <th>学分</th>
+                                <th>学时</th>
+                                <th>上课人数</th>
+                                <th>上课时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mytable">
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>560001</td>-->
+<!--                                <td>软件工程</td>-->
+<!--                                <td>刘春</td>-->
+<!--                                <td>周五 17:00-18:40</td>-->
+<!--                                <td><a href="admin-courmsg-view.html" class="xiangqing">查看详情</a></td>-->
+<!--                            </tr>-->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+        <footer class="row">
+            <div class="bottom" id="low">
+                <div class="col-md-5">
+                    <div class="panel-body">
+                        <a href="admin-teamsg.html">教师信息</a>
+                        <a href="admin-stumsg.html">学生信息</a>
+                        <a href="admin-courmsg.html">课程信息</a>
+                        <!-- <a href="research.html">查看成绩</a>
+                        <a href="Undergraduate.html">选课系统</a> -->
+                        <a href="../login.html" id="only">退出登录</a>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset--1" style="background: black;">
+                    <p class="text-right">
+<!--                                                小组成员：李坤松、薛成、刘佳鑫、陈天生、董天识、张敖铭-->
+                        小组成员：李坤松、薛成、李世龙
+                        <br>
+                        项目名: <a href="# ">LXLDCZ教学信息管理平台</a>
+                    </p>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+</body>
+
+</html>

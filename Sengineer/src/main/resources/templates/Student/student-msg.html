@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:method="http://www.w3.org/1999/xhtml"><html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生端个人信息</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/same.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homefrom.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/titleDown.css}"></link>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/aos.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/homefromInput.js}"></script>
+
+</head>
+<body>
+    <div class="container-fluid thetop">
+        <div class="navbar navbar-default" >
+               <div class="col-md-6 col-sm-11"><img th:src="@{/img/index.png}"></div>
+        </div>
+        <div class="row titledown">
+            <div class="col-md-12">
+                <p>当前端口：学生端</p>            
+            </div>
+        </div>       
+   </div>
+    
+    <div class="container-fluid mid"> 
+        <div class="row notfoot">
+            <div class="col-md-2 col-md-offset-1 sidebar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tab1" style="background: black;">
+                        <span class="sr-only">菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <ul class="nav nav-pills navbar-collapse collapse" id="tab1" role="tablist">
+                    <li role="presentation" class="active"><a th:href="@{/toStudentMsg}">个人信息</a></li>
+                    <li role="presentation"><a th:href="@{/toStudentClass}">查看课程</a></li>
+                    <li role="presentation"><a th:href="@{/toStudentGrade}">查看成绩</a></li>
+                    <li role="presentation"><a th:href="@{/toStudentChoose}">选课系统</a></li>
+                    <li role="presentation"><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">   
+                <form class="form-horizontal" role="form" th:action="@{/changeStu}" method="post">
+                    <!--<fieldset disabled>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input class="form-control"
+                                   id="focusedInput" name="name"
+                                   type="text" th:value="${StuMsg.getName()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputStuid" class="col-sm-2 control-label">学号</label>
+                        <div class="col-sm-10">
+                            <input class="form-control"
+                                   id="inputStuid" type="text" name="stu_id" th:value="${StuMsg.getStu_id()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="disabledSelect2" class="col-sm-2 control-label">所属院系</label></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="disabledSelect2" name="faculty" type="text" th:value="${StuMsg.getFaculty()}">
+                            </input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="disabledSelect" class="col-sm-2 control-label">专业</label></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="major" id="disabledSelect"
+                                   type="text" th:value="${StuMsg.getMajor()}">
+                            </input>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="disabledSelect1" class="col-sm-2 control-label">班级</label></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="disabledSelect1" type="text" name="classes" th:value="${StuMsg.getClasses()}"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputSuccess">身份证号码</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="id_card" class="form-control editok" id="inputSuccess" th:value="${StuMsg.getId_card()}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputWarning1">手机号码</label></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control editok" name="phone" id="inputWarning1" th:value="${StuMsg.getPhone()}" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputWarning">电子邮箱</label></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="email" class="form-control editok" id="inputWarning" th:value="${StuMsg.getEmail()}">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="col-sm-2 control-label" for="name">家庭住址</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    </fieldset>-->
+                    <div class="row">
+                        <button type="button" class="btn btn-info" id="edit" style="margin-left: 35%;">编辑</button>
+                
+                        <button type="submit" class="btn btn-danger" id="sub" style="position: absolute; margin-left:40px">提交</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        
+        <footer class="row">
+                <div class="bottom" id="low">
+                    <div class="col-md-5">
+                        <div class="panel-body">
+                            <a th:href="@{/toStudentMsg}">个人信息</a>
+                            <a th:href="@{/toStudentClass}">查看课程</a>
+                            <a th:href="@{/toStudentGrade}">查看成绩</a>
+                            <a th:href="@{/toStudentChoose}">选课系统</a>
+                            <a th:href="@{/logout}">退出登录</a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset--1" style="background: black;">
+                        <p class="text-right">
+<!--                                                    小组成员：李坤松、薛成、刘佳鑫、陈天生、董天识、张敖铭-->
+                            小组成员：李坤松、薛成、李世龙
+                            <br>
+                                项目名: <a href="# ">LXLDCZ教学信息管理平台</a>
+                        </p>
+                    </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+    
+</body>
+</html>

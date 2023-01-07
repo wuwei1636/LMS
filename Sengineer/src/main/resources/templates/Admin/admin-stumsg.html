@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员端学生信息</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/same.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/titleDown.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homefrom.css}">
+    <link rel="stylesheet" th:href="@{/css/teacher-course-view.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/aos.js}"></script>
+    <script th:src="@{/js/Admin/admin_stumsg.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins.min.js}"></script>
+    <script th:src="@{/js/search.js}"></script>
+    <style>
+        a.xiangqing{
+            font-size: 14px;
+            color: #333;
+        }
+        a.xiangqing:hover {
+            color: #b6124a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid thetop">
+        <div class="navbar navbar-default" >
+            <div class="col-md-6 col-sm-11"><img th:src="@{/img/index.png}"></div>
+        </div>
+        <div class="row titledown">
+            <div class="col-md-12">
+                <p>当前端口：管理员</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mid">
+        <div class="row notfoot">
+            <div class="col-md-2 col-md-offset-1 sidebar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tab1"
+                        style="background: black;">
+                        <span class="sr-only">菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <ul class="nav nav-pills navbar-collapse collapse" id="tab1" role="tablist">
+                    <li role="presentation"><a th:href="@{/toAdminTeammsg}">教师信息</a></li>
+                    <li role="presentation" class="active"><a th:href="@{/toAdminStumsg}">学生信息</a></li>
+                    <li role="presentation"><a th:href="@{/toAdminCoursemsg}">课程信息</a></li>
+                    <!-- <li role="presentation"><a href="chooseclass.html">选课系统</a></li> -->
+                    <li role="presentation"><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9 content">
+                <div class="top">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="exampleInputName1">学号</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="请输入学号">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName2">姓名</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName2">年级</label>
+                            <select class="form-control" id="select1">
+                                <option>2019级</option>
+                                <option>2020级</option>
+                                <option>2021级</option>
+                                <option>2022级</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleInputName2">院系</label>
+                            <select class="form-control" id="select2">
+                                <option>计算机与信息工程学院</option>
+                                <option>数学与统计学院</option>
+                                <option>教育学部</option>
+                                <option>国际教育学院</option>
+                            </select>
+                        </div>
+                        <div class="form-group right">
+                            <button type="button" class="btn btn-primary" id="add">新增学生</button>
+                            <button type="button" class="btn btn-primary" id="search_l">搜索</button>
+                            <button type="button" class="btn btn-primary" id="search_all">检索全部</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bottom">
+                    <table class="table table-hover table-responsive ">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>年级</th>
+                                <th>院系</th>
+                                <th>专业</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mytable">
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>2012020033</td>-->
+<!--                                <td>刘佳鑫</td>-->
+<!--                                <td>2020级</td>-->
+<!--                                <td>计算机与信息工程学院</td>-->
+<!--                                <td>计算机科学与技术</td>-->
+<!--                                <td><a href="admin-stumsg-view.html" class="xiangqing">修改信息</a></td>-->
+<!--                            </tr>-->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <footer class="row">
+            <div class="bottom" id="low">
+                <div class="col-md-5">
+                    <div class="panel-body">
+                        <a href="admin-teamsg.html">教师信息</a>
+                        <a href="admin-stumsg.html">学生信息</a>
+                        <a href="admin-courmsg.html">课程信息</a>
+                        <!-- <a href="research.html">查看成绩</a>
+                        <a href="Undergraduate.html">选课系统</a> -->
+                        <a href="../login.html" id="only">退出登录</a>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset--1" style="background: black;">
+                    <p class="text-right">
+<!--                                                小组成员：李坤松、薛成、刘佳鑫、陈天生、董天识、张敖铭-->
+                        小组成员：李坤松、薛成、李世龙
+                        <br>
+                        项目名: <a href="# ">LXLDCZ教学信息管理平台</a>
+                    </p>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+</body>
+
+</html>

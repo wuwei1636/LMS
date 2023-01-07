@@ -1,0 +1,15 @@
+div.content {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+div.content div.form-group {
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+div.content div.form-group button.btn {
+  outline: none;
+  margin-right: 20px;
+}
+div.content div.right {
+  float: right;
+}

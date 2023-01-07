@@ -1,0 +1,72 @@
+html,body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-image: url(../img/04.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login {
+  width: 1000px;
+  background-color: #fff;
+  margin-top: -110px;
+  box-shadow: 3px 5px 15px black;
+}
+.login .cover {
+  background-image: url(../img/06.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login .cover p{
+  font-size: 40px; 
+  color: black;
+  text-align: center;
+  height: 300px;
+  line-height: 300px;
+  color: white;
+  font-family: 楷体;
+}
+.login .core {
+  padding-left: 28px;
+}
+.footer {
+  color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  text-align: center;
+  padding: 1.4rem 0;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  color: white;
+}
+
+@media screen and (max-width: 900px) {
+  body.ax-align-origin {
+    background-image: none;
+    display: block;
+  }
+  .login {
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .login .cover {
+    height: 20rem;
+    border-radius: 0;
+  }
+  .login .core {
+    padding-left: 0;
+  }
+  .login form {
+    margin: 0;
+  }
+  .footer {
+    position: inherit;
+    color: #666666;
+  }
+  .footer a {
+    color: #666666;
+  }
+}

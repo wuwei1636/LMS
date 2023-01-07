@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sengineer.Mapper.AdminMapper">
+
+    <select id="queryAdminByName" parameterType="String" resultType="admin">
+        select * from Admin where name = #{name};
+    </select>
+
+    <select id="getAPwdByName" resultType="String">
+        select password from Admin where name = #{name};
+    </select>
+
+<!--  管理员对学生部分  -->
+
+    <select id="getStuByFac" resultType="student">
+        select *
+        from Student
+        where year_age = #{year_age} and faculty = #{faculty}
+        <if test="stu_id != '' and stu_id != null">
+            and stu_id = #{stu_id}
+        </if>
+        <if test="name != '' and name != null">
+            and name like concat ('%', #{name} ,'%')
+        </if>
+        ORDER BY stu_id
+    </select>
+
+
+    <insert id="InsertStu">
+        insert into Student (stu_id , name , password ,
+                             classes , faculty ,major,
+        <if test="id_card != '' and id_card != null">
+            id_card,
+        </if>
+        <if test="email != '' and email != null">
+            email,
+        </if>
+        <if test="phone != '' and phone != null">
+            phone,
+        </if>
+
+        year_age
+        )
+        values  (#{stu_id},#{name},#{password},#{classes},#{faculty},#{major},
+        <if test="id_card != '' and id_card != null">
+            #{id_card},
+        </if>
+        <if test="email != '' and email != null">
+            #{email},
+        </if>
+        <if test="phone != '' and phone != null">
+            #{phone},
+        </if>
+
+        #{year_age });
+    </insert>
+
+    <update id="updateStuPInfo">
+        update Student
+        set  name = #{name} , password = #{password},
+            id_card = #{id_card},classes = #{classes}, faculty = #{faculty},
+            email = #{email},phone = #{phone}
+        where stu_id = #{stu_id};
+    </update>
+
+    <delete id="delStu">
+        delete from Student where stu_id  = #{stu_id};
+    </delete>
+
+
+
+
+<!--  管理员对教师部分  -->
+
+
+    <select id="getTeaByFac" resultType="teacher">
+        select *
+        from Teacher
+        where faculty = #{faculty} and professional_title = #{professional_title}
+        <if test="teacher_id != '' and teacher_id != null">
+            and teacher_id = #{teacher_id}
+        </if>
+        <if test="name != '' and name != null">
+            and name like concat ('%', #{name} ,'%')
+        </if>
+        ORDER BY teacher_id
+    </select>
+
+
+    <insert id="InsertTea">
+        insert into Teacher (teacher_id , name , password , faculty,
+        <if test="id_card != '' and id_card != null">
+            id_card,
+        </if>
+        <if test="email != '' and email != null">
+            email,
+        </if>
+        <if test="phone != '' and phone != null">
+            phone,
+        </if>
+        professional_title)
+        values  (#{teacher_id},#{name},#{password}, #{faculty},
+        <if test="id_card != '' and id_card != null">
+            #{id_card},
+        </if>
+        <if test="email != '' and email != null">
+            #{email},
+        </if>
+        <if test="phone != '' and phone != null">
+            #{phone},
+        </if>
+        #{professional_title});
+    </insert>
+
+    <update id="updateTeaPInfo">
+        update teacher
+        set  name = #{name} , password = #{password},
+             id_card = #{id_card}, faculty = #{faculty},
+             email = #{email},phone = #{phone}
+        where teacher_id = #{teacher_id};
+    </update>
+
+    <delete id="delTea">
+        delete from Teacher where teacher_id  = #{teacher_id};
+    </delete>
+
+
+
+
+
+<!--  管理员对课程部分  -->
+
+    <select id="getAllC" resultType="course">
+        select *
+        from course
+        ORDER BY course_id;
+    </select>
+
+
+    <insert id="InsertCourse">
+        insert into course (course_id , course_name ,teacher_id, teacher_name,stu_num , credit_hour,credit
+                           , year , semester , classroom,session_time , isrequired , specialized,assessment_method )
+        values  (#{course_id},#{course_name},#{teacher_id}, #{teacher_name} ,0, #{credit_hour}
+                , #{credit}, #{year}, #{semester}, #{classroom}, #{session_time}
+                , #{isrequired}, #{specialized}, #{assessment_method});
+    </insert>
+
+    <update id="updateCourse">
+        update course
+        set  course_name = #{course_name}, teacher_name = #{teacher_name}, stu_num = #{stu_num},
+             credit_hour = #{credit_hour},credit = #{credit}
+        where course_id = #{course_id};
+    </update>
+
+    <delete id="delCourse">
+        delete from course where course_id  = #{course_id};
+    </delete>
+
+
+
+
+
+</mapper>

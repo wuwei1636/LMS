@@ -1,0 +1,40 @@
+.toolChoose,.classTable{
+    border: #d3d3d3 2px dashed;
+    margin-top: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 5px;
+}
+.classTable{
+    height: 460px;
+    overflow: auto;
+  }
+.requirement p{
+    float: left;
+    margin-right: 10px;   
+    height: 30px;
+    line-height: 30px;
+}
+.requirement select,.requirement input{
+    width: 100px;
+    float: left;
+    margin-right: 10px;
+}
+
+.sub{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.sub > .btn:first-child{
+    margin-right: 20px;
+}
+
+.classTable table{
+    margin-top: 10px;
+    width: 90%;
+    margin-left: 5%;
+}
+.special{
+    width: 1px;
+}

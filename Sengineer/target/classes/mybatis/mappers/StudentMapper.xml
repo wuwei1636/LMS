@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sengineer.Mapper.StudentMapper">
+
+
+    <select id="stulist" resultType="Student">
+        select * from Student order by  stu_id
+    </select>
+
+    <select id="stuCen" resultType="Student">
+        select * from Student where stu_id = #{stu_id}
+    </select>
+
+    <select id="getStuPwdBystuId" resultType="String">
+        select password from Student where stu_id = #{stu_id};
+    </select>
+
+    <update id="updatePerInfo" parameterType="Student">
+        update Student
+        set stu_id = #{stu_id}, name = #{name},faculty = #{faculty},
+            major = #{major},classes = #{classes}, id_card = #{id_card},
+            email = #{email} ,phone = #{phone}
+        where stu_id = #{stu_id};
+    </update>
+
+    <select id="getGrade" resultType="Course_grade">
+        select al.course_id , al.grade, c.course_name ,
+               c.credit_hour , c.credit,c.stu_num, c.year , c.semester,
+               c.isrequired ,c.specialized , c.assessment_method
+        from Allcourse as al
+        left join course as c on c.course_id = al.course_id
+        where al.stu_id = #{stu_id}
+        <if test="year != '' and year != null">
+            and year = #{year}
+        </if>
+        <if test="semester != '' and semester != null">
+            and semester = #{semester}
+        </if>
+    </select>
+
+    <select id="getScore" resultType="Course_all">
+        select al.course_id , c.course_name , c.teacher_name,
+               c.credit_hour , c.credit ,c.stu_num, c.year , c.semester,
+               c.classroom,c.session_time ,c.isrequired , c.specialized
+        from Allcourse as al
+                 left join course as c on c.course_id = al.course_id
+        where al.stu_id = #{stu_id}
+        <if test="year != '' and year != null">
+            and year = #{year}
+        </if>
+        <if test="semester != '' and semester != null">
+            and semester = #{semester}
+        </if>
+
+    </select>
+
+</mapper>

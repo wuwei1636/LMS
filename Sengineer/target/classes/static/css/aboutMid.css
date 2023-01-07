@@ -1,0 +1,18 @@
+#mid1{
+	background: none; 
+	border: none;
+}
+#mid1 .col-md-10{
+	border: #e5e5e5 1px solid;
+	margin-bottom: 20px;
+}
+#mid1 img{
+	width: 315px;
+	border-radius: 5px;
+	margin: 4px 0 20px 4px;
+	padding-right: 5px;
+
+}
+#mid1 p{
+	text-indent: 2em;
+}

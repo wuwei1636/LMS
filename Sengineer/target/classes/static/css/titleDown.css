@@ -1,0 +1,10 @@
+.titledown{
+	width: 100%;
+	background-color: #b6124a;
+	padding: 6px;
+}
+.titledown p{
+	float: right;
+	color: white;
+	font-size: 15px;
+}

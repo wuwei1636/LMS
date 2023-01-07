@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sengineer.Mapper.TeacherMapper">
+
+    <select id="teacherList" resultType="Teacher">
+        select * from Teacher order by teacher_id;
+    </select>
+
+    <select id="teacherCen" resultType="Teacher">
+        select * from Teacher where teacher_id = #{teacher_id};
+    </select>
+
+    <select id="getTeaPwdById" resultType="String">
+        select password from Teacher where teacher_id = #{teacher_id};
+    </select>
+
+    <update id="updateTPerInfo" parameterType="Teacher">
+        update Teacher
+        set
+
+            teacher_id = #{teacher_id} , name = #{name} , faculty = #{faculty} ,
+            professional_title = #{professional_title} ,id_card = #{id_card} , email = #{email} , phone = #{phone}
+        where teacher_id = #{teacher_id};
+    </update>
+
+    <select id="getAllTeach" resultType="course">
+        select * from course where teacher_id = #{teacher_id}
+        <if test="year != '' and year != null">
+            and year = #{year}
+        </if>
+        <if test="semester != '' and semester != null">
+            and semester = #{semester}
+        </if>
+    </select>
+
+    <select id="getStuGraCour" resultType="Stu_grade">
+        select al.stu_id  , stu.name ,stu.year_age,
+               stu.faculty , stu.major , al.grade
+        from Allcourse as al,Student as stu
+        where al.course_id = #{course_id} and stu.stu_id = al.stu_id
+        <if test="stu_id != '' and stu_id != null">
+            and al.stu_id = #{stu_id}
+        </if>
+        <if test="name != '' and name != null">
+            and stu.name like concat ('%', #{name} ,'%')
+        </if>
+        <if test="year_age != '' and year_age != null">
+            and year_age = #{year_age}
+        </if>
+        <if test="faculty != '' and faculty != null">
+            and faculty = #{faculty}
+        </if>
+        <if test="stu_id != '' and stu_id != null">
+            and major = #{major}
+        </if>
+    </select>
+
+
+    <update id="updateGrade" parameterType="Allcourse">
+        update Allcourse
+        set grade = #{grade}
+        where course_id = #{course_id} and stu_id = #{stu_id};
+    </update>
+
+</mapper>
