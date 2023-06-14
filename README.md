@@ -1,4 +1,6 @@
 # 教学信息管理系统
+最新更改请前往gitee查看，GitHub懒得提交了
+https://gitee.com/li-kunsong/software-engineering-backend
 一共分为三个部分：学生，教师，管理员。
 
 系统中所有老师及学生的信息均为模拟出来的，并非真实信息
