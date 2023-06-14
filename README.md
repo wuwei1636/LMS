@@ -1,5 +1,5 @@
 # 教学信息管理系统
-最新更改请前往gitee查看，GitHub懒得提交了
+最新更改请前往gitee查看，最开始建的不是GitHub仓库 ，GitHub懒得提交了
 
 https://gitee.com/li-kunsong/software-engineering-backend
 
